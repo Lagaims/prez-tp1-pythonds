@@ -1,0 +1,125 @@
+---
+title: "TP 1 - Python pour la data science"
+author: "Laura Gaimard"
+date: "18 septembre 2026"
+date-format: "D MMMM YYYY"
+slide-number: c/t
+lang: fr-FR
+slide-tone: false
+chalkboard:
+  theme: whiteboard
+format:
+  onyxia-revealjs:
+    output-file: index.html
+controls: true
+css: styles/custom.css
+ascii: true
+---
+
+## Au programme
+
+1. [**Les objectifs généraux**]{.orange} — ce que vous devrez maîtriser à la fin de ces TP
+2. [**L'évaluation**]{.orange} — le projet, les données et le barème de notation
+3. [**NumPy et pandas**]{.orange} — la boîte à outils de base du statisticien
+
+Le cours en ligne : <https://pythonds.linogaliana.fr/>
+
+# 1️⃣ Les objectifs généraux
+
+## Qu'est ce que la data science ?
+
+> La combinaison de techniques issues des [**mathématiques**]{.orange}, de la [**statistique**]{.orange} et de [**l'informatique**]{.orange} pour produire de la [**connaissance utile à partir de données**]{.orange}.
+>
+> — Lino Galiana, _Python pour la data science_
+
+
+## Les étapes d'un projet de données
+
+1. [**Récupérer et structurer**]{.orange} → scraping, API, bases de données
+2. [**Explorer et manipuler**]{.orange} → nettoyer les données, statistiques descriptives
+3. [**Visualiser et communiquer**]{.orange} → tableaux, graphiques, sites interactifs
+4. [**Modéliser**]{.orange}
+
+## Les étapes d'un projet de données
+
+L'étape 2, le _data wrangling_ (ou étape de préprocessing), est souvent négligée ailleurs. 
+
+C'est pourtant celle qui vous prendra le plus de temps : l'objectif du cours est d'y acquérir [**les bons réflexes**]{.orange}, sur de vraies données et avec une exigence de [**reproductibilité**]{.orange}.
+
+# 2️⃣ L'évaluation
+
+## Le projet
+
+- [**Groupes de 3**]{.orange}, [**sujet libre**]{.orange} **à faire valider**
+- Jeux de données **interdits** : les jeux issus de [**compétition Kaggle**]{.red2}, l'[**API Twitter/X**]{.red2} ou des [**jeux de données privés**]{.red2}
+- Rendu fin novembre, soutenance début décembre
+
+[**Objectif**]{.orange} : réaliser un projet de data science complet
+
+[**Pour la semaine prochaine**]{.orange} : composition des groupes + refléchir au sujet traité
+
+[**Choix du sujet avant le 2/10**]{.orange}
+
+## Ce qui est attendu
+
+**Récupérer** : open data, [**scraping**]{.orange}, [**API**]{.orange}. Croiser les sources et automatiser la collecte est valorisé.
+
+**Nettoyer** : valeurs manquantes, gestion des formats... [**Documentez vos choix**]{.orange} et les biais possibles de la donnée.
+
+**Analyser** : des statistiques [**interprétées**]{.orange} ; des graphiques commentés...
+
+**Reproductibilité** : codes sur [**github**]{.orange} et projet exécutable sur le [**SSPCloud**]{.orange}. Le README doit indiquer toutes les étapes à suivre pour l'exécution du projet.
+
+## Les livrables
+
+- un notebook Jupyter, un Quarto Markdown, ou une application [**Streamlit**]{.orange} avec une page d'explication
+- [**dépôt GitHub public obligatoire**]{.orange}, avec des commits fréquents
+- données accessibles : URL, dépôt, ou stockage S3 du SSP Cloud
+- gestion de l'environnement : un `requirements.txt` ou un `pyproject.toml`
+- du code [**modulaire**]{.orange} et documenté : des fonctions dans des fichiers `.py`, pas des cellules copiées-collées
+
+## Le barème et les règles d'or
+
+:::: {.columns}
+
+::: {.column width="45%"}
+| Critère | Points |
+|---|:---:|
+| Collecte & nettoyage | 4 |
+| Analyse descriptive | 4 |
+| Rigueur & reproductibilité | 5 |
+| Format & documentation | 2 |
+| Soutenance | 5 |
+:::
+
+::: {.column width="55%"}
+1. [**La reproductibilité n'est pas négociable**]{.orange}
+
+2. [**Pas de vibe coding**]{.red2}
+
+3. [**Pas de gros fichiers dans Git**]{.orange}
+:::
+
+::::
+
+# 3️⃣ NumPy et pandas
+
+## NumPy, la brique de base
+
+> [**La brique de base de l'écosystème de la data science en Python**]{.orange} : pandas, scikit-learn, matplotlib ou pytorch en dépendent tous.
+
+L'objet central est l'[**array**]{.orange} : un tableau avec tous les élements du même type et plus rapide, là où la liste Python est hétérogène et lente.
+
+```python
+resultat = [x**2 for x in liste]   # boucle Python
+resultat = array**2                # vectorisation NumPy
+```
+
+La [**vectorisation**]{.orange}, c'est écrire l'opération sur le tableau entier, sans boucler sur chaque élément. On y gagne en lisibilité et en vitesse.
+
+## pandas, le DataFrame
+
+Avant pandas, Python n'avait pas les structures qui faisaient la force de R ou de Stata. Wes McKinney y apporte le [**DataFrame**]{.orange}, bâti sur NumPy.
+
+- des colonnes de [**types différents**]{.orange}, une indexation [**par label**]{.orange}, les [**valeurs manquantes**]{.orange} gérées nativement
+- le [**tidy data**]{.orange} : une variable = une colonne, une observation = une ligne, une valeur = une cellule
